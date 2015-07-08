@@ -73,16 +73,16 @@ In sharded collections, range queries in TokuMX are optimized thanks to the use 
 
 In addition, chunk migrations (for cluster balancing) in TokuMX require significantly less I/O than in basic MongoDB. This means migrations typically have no impact on the application workload in TokuMX, which simplifies operations and data modeling.
 
-Hot Backup
-----------
+:ref:`hot_backup`
+-----------------
 TokuMX’s Hot Backup solution gives you backups you can trust, without downtime or complicated cluster management. This feature is only available in the Enterprise Edition.
 
-Point-in-time Recovery
+:ref:`pitr_plugin`
 ----------------------
 TokuMX’s Point-in-time Recovery plugin empowers administrators to get a snapshot of the database at any point in the past, for disaster recovery, accountability, or historical analytics. This feature is only available in the Enterprise Edition.
 
-Audit Logging
--------------
+:ref:`audit` Logging
+--------------------
 TokuMX’s Audit Logging provides insight into the security of your cluster, providing feature parity with audit capabilities of MongoDB Enterprise Edition v2.6, with even more reliability. This feature is only available in the Enterprise Edition.
 
 Reduced SSD Wear
@@ -105,8 +105,17 @@ Full Table of Contents
    
    installation
    installation_from_packages
+   server_parameters
+   collection_index_options
+   commands
+   transactions
    tuning_for_production
    tokumx_migration
+   fast_updates
+   hot_backup
+   pitr_plugin
+   audit
+   errata
    faq
    glossary
    copyright

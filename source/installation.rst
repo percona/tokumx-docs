@@ -33,6 +33,8 @@ After downloading, optionally verify the MD5 checksum by comparing the output of
   $ md5sum tokumx-2.0.0-linux-x86_64-main.tar.gz 
   d2f979f2c6bb0d47bf9d3fd615a4ad53  tokumx-2.0.0-linux-x86_64-main.tar.gz
 
+.. _tarball_installation:
+
 Installing the Tarball
 ======================
 For maximum flexibility, we recommend unpacking the tarball to a unique location, and then creating symlinks to the binaries there. In this example, we'll unpack the tarball in :file:`/opt`.
