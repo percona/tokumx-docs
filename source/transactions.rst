@@ -195,7 +195,7 @@ When a thread in your application wants to execute a multi-statement transaction
 Commands
 --------
 
-Multi-statement transactions are managed by running three commands over a connection: :command:`beginTransaction`, :ref:`commitTransaction`, and :ref:`rollbackTransaction`. See :ref:`transaction_commands` for more details.
+Multi-statement transactions are managed by running three commands over a connection: :command:`beginTransaction`, :command:`commitTransaction`, and :command:`rollbackTransaction`. See :ref:`transaction_commands` for more details.
 
 .. _semantics_in_sharding:
 
@@ -209,7 +209,7 @@ Semantics in Sharding
 Atomicity in Sharding
 ---------------------
 
-In a sharded cluster, |TokuMX| provides atomicity on a per-shard basis. :ref:`multi-document_writes` that target a single shard are done atomically just as in a replica set. This is always the case for unsharded collections.
+In a sharded cluster, |TokuMX| provides atomicity on a per-shard basis. :ref:`multi-document writes <multi-document_atomicity>` that target a single shard are done atomically just as in a replica set. This is always the case for unsharded collections.
 
 A batch of inserts to a sharded collection targets a single shard (and is therefore atomic) if all documents in the batch have the same shard key. Updates with ``{multi: true}`` and removes with ``{justOne: false}`` target a single shard (and are therefore atomic) if the query parameter contains an equality clause on the shard key.
 

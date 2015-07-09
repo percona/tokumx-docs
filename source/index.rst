@@ -43,9 +43,9 @@ Compression
 -----------
 TokuMX transparently compresses all data on disk, and achieves up to a 20x reduction in HDD and flash storage requirements without impacting performance. It can dramatically reduce the number of servers needed to host a MongoDB database.
 
-Transactions
-------------
-TokuMX adds transactions with MVCC semantics and ACID reliability to any MongoDB application, making MongoDB suitable for a much wider range of applications. This includes:
+:ref:`transactions`
+-------------------
+|TokuMX| adds transactions with MVCC semantics and ACID reliability to any MongoDB application, making MongoDB suitable for a much wider range of applications. This includes:
 
  * Snapshot (MVCC) queries: Without application changes, queries in TokuMX return a consistent snapshot of the data. Queries will not see the effects of modifications that complete after the query starts, unlike in MongoDB where documents can be out of sync, duplicated, or missing due to interleaved updates.
 
@@ -75,19 +75,19 @@ In addition, chunk migrations (for cluster balancing) in TokuMX require signific
 
 :ref:`hot_backup`
 -----------------
-TokuMX’s Hot Backup solution gives you backups you can trust, without downtime or complicated cluster management. This feature is only available in the Enterprise Edition.
+TokuMX's Hot Backup solution gives you backups you can trust, without downtime or complicated cluster management. This feature is only available in the Enterprise Edition.
 
 :ref:`pitr_plugin`
 ----------------------
-TokuMX’s Point-in-time Recovery plugin empowers administrators to get a snapshot of the database at any point in the past, for disaster recovery, accountability, or historical analytics. This feature is only available in the Enterprise Edition.
+TokuMX's Point-in-time Recovery plugin empowers administrators to get a snapshot of the database at any point in the past, for disaster recovery, accountability, or historical analytics. This feature is only available in the Enterprise Edition.
 
 :ref:`audit` Logging
 --------------------
-TokuMX’s Audit Logging provides insight into the security of your cluster, providing feature parity with audit capabilities of MongoDB Enterprise Edition v2.6, with even more reliability. This feature is only available in the Enterprise Edition.
+TokuMX's Audit Logging provides insight into the security of your cluster, providing feature parity with audit capabilities of MongoDB Enterprise Edition v2.6, with even more reliability. This feature is only available in the Enterprise Edition.
 
 Reduced SSD Wear
 ----------------
-TokuMX’s fractal trees do fewer and bigger writes to the file system, thereby reducing wear on the SSD and extending its lifetime.
+TokuMX's fractal trees do fewer and bigger writes to the file system, thereby reducing wear on the SSD and extending its lifetime.
 
 Geospatial Indexes
 ------------------
@@ -108,9 +108,14 @@ Full Table of Contents
    server_parameters
    collection_index_options
    commands
+   server_status
+   concurrency
    transactions
+   replication
+   sharding
    tuning_for_production
    tokumx_migration
+   partitioned_collections
    fast_updates
    hot_backup
    pitr_plugin

@@ -228,8 +228,11 @@ Example:
 
   db.foo.ensureIndex({x: 1}, {fanout: 64})
 
+.. _modifying_index_options:
+
 Modifying Index Options
 =======================
+
 Index options (:option:`compression`, :option:`pageSize`, etc.) can be changed after the index is created.
 
 This modifies the header so that all tree nodes written out after this point will use the new options; nodes that aren't changed won't see the new options until they are. This makes the modification instantaneous, but means the effect will be delayed. You can later force all nodes to be rewritten by optimizing the indexes with ``reIndex``.
