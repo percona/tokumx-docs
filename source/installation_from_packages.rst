@@ -251,7 +251,7 @@ Arch
 
 1. Add the |TokuMX| package repository to your :file:`/etc/pacman.conf`: 
                         
-.. code-block:: none
+.. code-block:: text
 
   [tokumx]
   Server = https://s3.amazonaws.com/tokumx-archlinux/$arch
