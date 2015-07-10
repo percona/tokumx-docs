@@ -29,7 +29,7 @@ Instructions
 
    .. code-block:: bash
 
-   $ sudo mongodump --dbpath /var/lib/mongodb --out /var/lib/configdb.backup
+     $ sudo mongodump --dbpath /var/lib/mongodb --out /var/lib/configdb.backup
 
 4. Uninstall |MongoDB| from config servers
 
