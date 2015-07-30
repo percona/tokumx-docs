@@ -23,13 +23,17 @@ Instructions
 
    Back up one of the |MongoDB| config servers with :program:`mongodump`.
 
-   You will need the :variable:`dbpath` from :file:`/etc/mongodb.conf` (this is often :file:`/var/lib/mongodb`) and you will need to choose a location for the backup (here, :file:`/var/lib/configdb.backup`).
-
-   One config server only:
+   For MongoDB 3.0.0 and later versions, use the following command to back up to :file:`/var/lib/mongodb.backup`:
 
    .. code-block:: bash
 
-     $ sudo mongodump --dbpath /var/lib/mongodb --out /var/lib/configdb.backup
+     $ sudo mongodump --out /var/lib/mongodb.backup
+
+   For MongoDB versions prior to 3.0.0, you will also need the :variable:`dbpath` from your command-line options or :file:`/etc/mongodb.conf` (this is often :file:`/var/lib/mongodb`):
+
+   .. code-block:: bash 
+
+     $ sudo mongodump --dbpath /var/lib/mongodb --out /var/lib/mongodb.backup
 
 4. Uninstall |MongoDB| from config servers
 
