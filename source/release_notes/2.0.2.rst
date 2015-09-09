@@ -1,0 +1,24 @@
+.. rn:: 2.0.2
+
+=============
+TokuMX 2.0.2
+=============
+
+Percona is glad to announce the release of |TokuMX| 2.0.2 on September 10th, 2015. Downloads are available `here <https://www.percona.com/downloads/percona-tokumx-community-edition>`_ and from the :ref:`Percona Software Repositories <installation_from_packages>`.
+
+Based on `MongoDB 2.4.10 <http://docs.mongodb.org/manual/release-notes/2.4/#april-4-2014>`_ including all the bug fixes in it, |TokuMX| 2.0.2 is current GA release in |TokuMX| 2.0 series. 
+
+New Features
+============
+
+ |TokuMX| Enterprise has been open-sourced and it's now replacing |TokuMX| Community edition. To install or upgrade this new release use the :file:`tokumx-enterprise` package. Packages are available from :ref:`Percona Software Repositories <installation_from_packages>`, this means that you'll need to replace the Tokutek's S3 repository with Percona's in order to see the new packages.
+
+ Packages for *Fedora* and *Arch Linux* are not available anymore.
+
+Bugs Fixed
+==========
+
+ Fixed long replica node startup times: The entire op log is no longer read during startup, it is now read from the point of the last successfully replicated GTID. Git commit `#1d5afda <https://github.com/Tokutek/mongo/commit/1d5afdaf743801a8d6a47b0135ddacdde22ce131>`_.
+
+ Fixed rare multiple primary issue: In certain scenarios, replicas would attempt to declare themselves as primary when another node had already been declared as primary. A node now performs an extra check against its role during remote primary notification. Git commit `#5909737 <https://github.com/Tokutek/mongo/commit/5909737a27025c99260a50d96b29c29f057cdc5d>`_.
+
