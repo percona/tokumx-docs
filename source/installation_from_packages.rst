@@ -143,13 +143,13 @@ The packages come in four components:
 
    .. code-block:: bash
 
-   $ echo "deb http://repo.percona.com/apt "$(lsb_release -sc)" main" | sudo tee /etc/apt/sources.list.d/percona.list
+     $ echo "deb http://repo.percona.com/apt "$(lsb_release -sc)" main" | sudo tee /etc/apt/sources.list.d/percona.list
 
    Additionally you can enable the source package repository by running:
 
    .. code-block:: bash
 
-   $ echo "deb-src http://repo.percona.com/apt "$(lsb_release -sc)" main" | sudo tee -a /etc/apt/sources.list.d/percona.list
+     $ echo "deb-src http://repo.percona.com/apt "$(lsb_release -sc)" main" | sudo tee -a /etc/apt/sources.list.d/percona.list
 
 3. Remember to update the local cache:
 
@@ -162,7 +162,6 @@ The packages come in four components:
    .. code-block:: bash
 
      $ sudo apt-get install tokumx-enterprise
-
 
 .. tip::
   After installing, read the instructions for :ref:`upgrading_tokumx`.
