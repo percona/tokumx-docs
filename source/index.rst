@@ -125,6 +125,7 @@ Full Table of Contents
    glossary
    copyright
    trademark-policy
+   release_notes/release_notes_index
 
 * :ref:`genindex`
 

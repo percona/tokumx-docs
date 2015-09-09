@@ -4,7 +4,7 @@
  Installation
 ==============
 
-|TokuMX| Community edition is available in :ref:`packages <installation_from_packages>` for :ref:`centos`, :ref:`debian`, :ref:`fedora`, :ref:`ubuntu`, and :ref:`arch`.
+|TokuMX| Community edition is available in :ref:`packages <installation_from_packages>` for :ref:`centos` and :ref:`debian_and_ubuntu`. 
 
 For users of other distributions, Tokutek provides a binary version of |TokuMX|. The Tokutek distribution includes the |TokuMX| server (``mongod``), router (``mongos``), and client (``mongo``) for your system, as well as miscellaneous tools like those provided with |MongoDB|.
 
@@ -13,7 +13,7 @@ The installation of |TokuMX| from a tarball release file is similar to the insta
 System and Hardware Requirements
 ================================
 
- * Operating Systems: |TokuMX| is currently supported on 64-bit Linux only. |TokuMX| is tested on *CentOS* 5 and 6, but is expected to work on other Linux distributions.
+ * Operating Systems: |TokuMX| is currently supported on 64-bit Linux only. |TokuMX| is tested on *CentOS* 5, 6 and 7, but is expected to work on other Linux distributions.
 
  * A virtual machine image is available for evaluations on Windows and Mac. There are also binaries available for recent versions of Mac OS X for development use only. Please contact us at support@tokutek.com for more information.
 

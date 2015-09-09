@@ -6,32 +6,73 @@
 
 .. _centos:
 
-CentOS
-======
-|TokuMX| is available for *CentOS* 5 and 6.
+RHEL/CentOS
+===========
+
+|TokuMX| is available for *CentOS* 5, 6 and 7.
 
 The packages come in three components:
 
- * :program:`tokumx` contains the :program:`mongo` client shell and various tools like :program:`mongoimport` and :program:`mongoexport`.
- * :program:`tokumx-common` contains the Fractal Tree indexing libraries and some documentation.
- * :program:`tokumx-server` contains the :program:`mongod` database server and the :program:`mongos` routing server.
+ * :program:`tokumx-enterprise` contains the :program:`mongo` client shell and various tools like :program:`mongoimport` and :program:`mongoexport`.
+ * :program:`tokumx-enterprise-common` contains the Fractal Tree indexing libraries and some documentation.
+ * :program:`tokumx-enterprise-server` contains the :program:`mongod` database server and the :program:`mongos` routing server.
 
 .. important:: 
   Before starting, make sure you have read about :ref:`replacing_mongodb` and :ref:`tokumx_migration`. You may want to export your existing data out of basic |MongoDB| before installing |TokuMX|.
 
-1. For a full installation, download all three packages from the download page.
+1. Install the Percona repository
 
-  You should have these files in your current directory:
+   You can install Percona yum repository by running the following command as a ``root`` user or with sudo:
 
-    * :file:`tokumx-2.0.0-2.el6.x86_64.rpm`
-    * :file:`tokumx-common-2.0.0-2.el6.x86_64.rpm`
-    * :file:`tokumx-server-2.0.0-2.el6.x86_64.rpm`
+   .. code-block:: bash
 
-2. Install the downloaded packages with :program:`yum`.
-                                                    
-.. code-block:: bash
-                                                                
-  $ sudo yum install tokumx*.rpm
+     yum install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
+
+   You should see some output such as the following:
+
+   .. code-block:: bash
+
+     Retrieving http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
+     Preparing...                ########################################### [100%]
+        1:percona-release        ########################################### [100%]
+
+.. note::
+
+  *RHEL*/*Centos* 5 doesn't support installing the packages directly from the remote location so you'll need to download the package first and install it manually with :program:`rpm`:
+
+    .. code-block:: bash
+
+      wget http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
+      rpm -ivH percona-release-0.1-3.noarch.rpm
+
+2. Testing the repository
+
+   Make sure packages are now available from the repository, by executing the following command:
+
+   .. code-block:: bash
+
+     yum list | grep tokumx
+
+You should see output similar to the following:
+
+   .. code-block:: bash
+
+     ...
+     libtokumx-enterprise.x86_64                 2.0.2-1.el6                  percona-release-x86_64
+     libtokumx-enterprise-devel.x86_64           2.0.2-1.el6                  percona-release-x86_64
+     tokumx-enterprise.x86_64                    2.0.2-1.el6                  percona-release-x86_64
+     tokumx-enterprise-common.x86_64             2.0.2-1.el6                  percona-release-x86_64
+     tokumx-enterprise-debuginfo.x86_64          2.0.2-1.el6                  percona-release-x86_64
+     tokumx-enterprise-server.x86_64             2.0.2-1.el6                  percona-release-x86_64
+     ...
+
+3. Install the packages
+
+   You can now install |Percona TokuMX| by running:
+
+   .. code-block:: bash
+
+     yum install tokumx-enterprise
 
 .. tip:: 
   After installing, read the instructions for :ref:`upgrading_tokumx`.
@@ -53,252 +94,95 @@ The packages come in three components:
     $ sudo chkconfig tokumx on
     $ sudo chkconfig tokumx off
 
-.. _fedora:
+.. _debian_and_ubuntu:
 
-Fedora
-======
-|TokuMX| is available for *Fedora* 20.
+Debian and Ubuntu
+=================
 
-The packages come in three components:
+|TokuMX| ready-to-use packages are from the |Percona| repositories.  
 
- * :file:`tokumx` contains the :program:`mongo` client shell and various tools like :program:`mongoimport` and :program:`mongoexport`.
- * :file:`tokumx-common` contains the Fractal Tree indexing libraries and some documentation.
- * :file:`tokumx-server` contains the :program:`mongod` database server and the :program:`mongos` routing server.
+Supported Releases:
+
+* Debian:
+
+ * 7.0 (wheezy)
+ * 8.0 (jessie)
+
+* Ubuntu:
+
+ * 12.04LTS (precise)
+ * 14.04LTS (trusty)
+ * 14.10 (utopic)
+ * 15.04 (vivid)
+
+The packages come in four components:
+
+ * :file:`tokumx-enterprise` is a metapackage that installs the full |TokuMX| distribution.
+ * :file:`tokumx-enterprise-clients` contains the :program:`mongo` client shell and various tools like :program:`mongoimport` and :program:`mongoexport`.
+ * :file:`tokumx-enterprise-common` contains the Fractal Tree indexing libraries and some documentation.
+ * :file:`tokumx-enterprise-server` contains the :program:`mongod` database server and the :program:`mongos` routing server.
 
 .. important:: 
   Before starting, make sure you have read about :ref:`replacing_mongodb` and :ref:`tokumx_migration`. You may want to export your existing data out of basic |MongoDB| before installing |TokuMX|.
 
-1. For a full installation, download all three packages from the download page.
+1. Import the public key for the package management system
 
-  You should have these files in your current directory:
- 
-    * :file:`tokumx-2.0.0-2.fc20.x86_64.rpm`
-    * :file:`tokumx-common-2.0.0-2.fc20.x86_64.rpm`
-    * :file:`tokumx-server-2.0.0-2.fc20.x86_64.rpm`
+  *Debian* and *Ubuntu* packages from *Percona* are signed with the Percona's GPG key. Before using the repository, you should add the key to :program:`apt`. To do that, run the following commands as root or with sudo:
 
-2. Install the downloaded packages with :program:`yum`.
+  .. code-block:: bash
 
-.. code-block:: bash
+    $ sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A
 
-  $ sudo yum install tokumx*.rpm
+  .. note::
+
+     In case you're getting timeouts when using ``keys.gnupg.net`` as an alternative you can fetch the key from ``keyserver.ubuntu.com``.
+
+2. Create the :program:`apt` source list for Percona's repository:
+
+   You can create the source list and add the percona repository by running:
+
+   .. code-block:: bash
+
+   $ echo "deb http://repo.percona.com/apt "$(lsb_release -sc)" main" | sudo tee /etc/apt/sources.list.d/percona.list
+
+   Additionally you can enable the source package repository by running:
+
+   .. code-block:: bash
+
+   $ echo "deb-src http://repo.percona.com/apt "$(lsb_release -sc)" main" | sudo tee -a /etc/apt/sources.list.d/percona.list
+
+3. Remember to update the local cache:
+
+   .. code-block:: bash
+
+     $ sudo apt-get update
+
+4. After that you can install the server package:
+
+   .. code-block:: bash
+
+     $ sudo apt-get install tokumx-enterprise
+
 
 .. tip::
   After installing, read the instructions for :ref:`upgrading_tokumx`.
 
-.. note::
-  To control the :program:`mongod` data server, use :program:`systemctl`:
-
-  .. code-block:: bash
-                                                                                                                        
-    $ sudo systemctl start tokumx
-    $ sudo systemctl restart tokumx
-    $ sudo systemctl stop tokumx
-                                                                                                                
-.. note::
-  To enable TokuMX on boot, use systemctl:
-
-  .. code-block:: bash
-                                                                                                                  
-    $ sudo systemctl enable tokumx
-    $ sudo systemctl disable tokumx
-
-.. _debian:
-
-Debian
-======
-|TokuMX| is available for *Debian* 7.
-
-The packages come in four components:
-
- * :file:`tokumx` is a metapackage that installs the full |TokuMX| distribution.
- * :file:`tokumx-clients` contains the :program:`mongo` client shell and various tools like :program:`mongoimport` and :program:`mongoexport`.
- * :file:`tokumx-common` contains the Fractal Tree indexing libraries and some documentation.
- * :file:`tokumx-server` contains the :program:`mongod` database server and the :program:`mongos` routing server.
-
-.. important:: 
-  Before starting, make sure you have read about :ref:`replacing_mongodb` and :ref:`tokumx_migration`. You may want to export your existing data out of basic |MongoDB| before installing |TokuMX|.
-
-1. Add the Tokutek package signing key.
-                                
-.. code-block:: bash
-
-  $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 505A7412
-
-You can check that the fingerprint is correct:
-
-.. code-block:: bash
-
-  $ sudo apt-key finger 505A7412
-  /etc/apt/trusted.gpg
-  --------------------
-  pub   2048R/505A7412 2014-01-27
-  Key fingerprint = DA56 C65D 432E DAB1 F183  AA6F 70A4 E325 505A 7412
-  uid                  Timothy Callaghan (Tokutek Key) <tim@tokutek.com>
-  sub   2048R/46A1A9B9 2014-01-27
-
-2. Add an entry for the |TokuMX| package repository for your *Debian* release (wheezy).
-
-.. code-block:: bash
-                                                                                                                
-  $ echo "deb [arch=amd64] http://s3.amazonaws.com/tokumx-debs wheezy main" \
-  | sudo tee /etc/apt/sources.list.d/tokumx.list
-
-3. Update :program:`apt` and install |TokuMX|.
-
-.. code-block:: bash
-                                                                                                                                        
-  $ sudo apt-get update
-  $ sudo apt-get install tokumx
-
-.. tip::
-  After installing, read the instructions for :ref:`upgrading_tokumx`.
-
-.. note::
-  To control the :program:`mongod` data server, use :program:`service`:
+To control the :program:`mongod` data server, use :program:`service`:
   
-  .. code-block:: bash
-                                                                                                                                        
-    $ sudo service tokumx start
-    $ sudo service tokumx restart
-    $ sudo service tokumx stop
+.. code-block:: bash
+    
+  $ sudo service tokumx start
+  $ sudo service tokumx restart
+  $ sudo service tokumx stop
 
 .. note:: 
-  To enable |TokuMX| on boot, use :program:`chkconfig`:
 
-  .. code-block:: bash
-                                                                                                                                        
-    $ sudo chkconfig tokumx on
-    $ sudo chkconfig tokumx off
+  *Debian* 8.0 (jessie) and *Ubuntu* 15.04 (vivid) come with `systemd <http://freedesktop.org/wiki/Software/systemd/>`_ as the default system and service manager so you can invoke all the above commands with ``sytemctl`` instead of ``service``. Currently both are supported.
 
-
-.. _ubuntu:
-
-Ubuntu
-======
-|TokuMX| is available for *Ubuntu* 12.04, 12.10, 13.04, 13.10, and 14.04.
-
-The packages come in four components:
-
- * :file:`tokumx` is a metapackage that installs the full |TokuMX| distribution.
- * :file:`tokumx-clients` contains the :program:`mongo` client shell and various tools like :program:`mongoimport` and :program:`mongoexport`.
- * :file:`tokumx-common` contains the Fractal Tree indexing libraries and some documentation.
- * :file:`tokumx-server` contains the :program:`mongod` database server and the :program:`mongos` routing server.
-
-.. important::
-  Before starting, make sure you have read about :ref:`replacing_mongodb` and :ref:`tokumx_migration`. You may want to export your existing data out of basic |MongoDB| before installing |TokuMX|.
-
-1. Add the Tokutek package signing key.
+To enable |TokuMX| on boot, use :program:`chkconfig`:
 
 .. code-block:: bash
 
-  $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 505A7412
-
-You can check that the fingerprint is correct:
-
-.. code-block:: bash
-
-  $ sudo apt-key finger 505A7412
-  /etc/apt/trusted.gpg
-  --------------------
-  pub   2048R/505A7412 2014-01-27
-  Key fingerprint = DA56 C65D 432E DAB1 F183  AA6F 70A4 E325 505A 7412
-  uid                  Timothy Callaghan (Tokutek Key) <tim@tokutek.com>
-  sub   2048R/46A1A9B9 2014-01-27
-
-2. Add an entry for the |TokuMX| package repository for your *Ubuntu* release (precise, quantal, raring, saucy, or trusty).
-
-.. code-block:: bash
-                                                                                                                
-  $ echo "deb [arch=amd64] http://s3.amazonaws.com/tokumx-debs $(lsb_release -cs) main" \
-  | sudo tee /etc/apt/sources.list.d/tokumx.list
-
-3. Update :program:`apt` and install |TokuMX|.
-
-.. code-block:: bash
-                                                                                                                
-  $ sudo apt-get update
-  $ sudo apt-get install tokumx
-
-.. tip::
-  After installing, read the instructions for :ref:`upgrading_tokumx`.
-
-.. note::
-  To control the :program:`mongod` data server, use :program:`service`:
-
-  .. code-block:: bash
-
-    $ sudo service tokumx start
-    $ sudo service tokumx restart
-    $ sudo service tokumx stop
-
-.. note:: 
-  To enable |TokuMX| on boot, use :program:`update-rc.d`:
-
-  .. code-block:: bash
-
-    $ sudo update-rc.d tokumx defaults
-    $ sudo update-rc.d tokumx remove
-
-.. _arch:
-
-Arch
-====
-
-|TokuMX| is available for *Arch Linux*.
-
-.. important::
-  Before starting, make sure you have read about :ref:`replacing_mongodb` and :ref:`tokumx_migration`. You may want to export your existing data out of basic |MongoDB| before installing |TokuMX|.
-
-1. Add the |TokuMX| package repository to your :file:`/etc/pacman.conf`: 
-                        
-.. code-block:: text
-
-  [tokumx]
-  Server = https://s3.amazonaws.com/tokumx-archlinux/$arch
-
-2. Fetch and locally sign the repository signing key:
-
-.. code-block:: bash
-                                        
-  $ sudo pacman-key --recv-keys 505A7412 --keyserver keyserver.ubuntu.com
-  $ sudo pacman-key --lsign-key 505A7412
-
-You can verify the fingerprint by comparing it with this output:
-
-.. code-block:: bash
-                                        
-  $ sudo pacman-key --finger 505A7412
-  pub   2048R/505A7412 2014-01-27
-  Key fingerprint = DA56 C65D 432E DAB1 F183  AA6F 70A4 E325 505A 7412
-  uid       [  full  ] Timothy Callaghan (Tokutek Key) <tim@tokutek.com>
-  sub   2048R/46A1A9B9 2014-01-27
-
-3. Install the downloaded packages with :program:`pacman`.
-
-.. code-block:: bash
-                                        
-  $ sudo pacman -Sy
-  $ sudo pacman -S tokumx
-
-.. tip:: 
-  After installing, read the instructions for :ref:`upgrading_tokumx`.
-
-.. note::
-  To control the mongod data server, use systemctl:
-  
-  .. code-block:: bash
-                                                                                                                
-    $ sudo systemctl start tokumx
-    $ sudo systemctl restart tokumx
-    $ sudo systemctl stop tokumx
-
-.. note:: 
-  To enable |TokuMX| on boot, use :program:`systemctl`:
-
-  .. code-block:: bash
-                                                                                                                
-    $ sudo systemctl enable tokumx
-    $ sudo systemctl disable tokumx
-
-
+  $ sudo chkconfig tokumx on
+  $ sudo chkconfig tokumx off
 
