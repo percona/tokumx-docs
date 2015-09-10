@@ -24,7 +24,7 @@ System and Hardware Requirements
 Downloading
 ===========
 
-To download the binary tarball, visit `Tokutek's Download Page <http://www.tokutek.com/tokumx-for-mongodb/download-community/>`_.
+To download the binary tarball, visit `Percona's Download Page <https://www.percona.com/downloads/percona-tokumx/LATEST/>`_.
 
 After downloading, optionally verify the MD5 checksum by comparing the output of :program:`md5sum` to the MD5 checksum from the download page:
 
@@ -99,7 +99,7 @@ To connect to the |TokuMX| server, use the :program:`mongo` program:
   For more comprehensive documentation, see
     http://docs.mongodb.org/
   and the TokuMX Users' Guide available at
-    http://www.tokutek.com/products/downloads/tokumx-ce-downloads/
+    https://www.percona.com/doc/percona-tokumx/
   Questions? Try the support group
   http://groups.google.com/group/tokumx-user
   > db.serverBuildInfo().tokumxVersion
