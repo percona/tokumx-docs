@@ -39,7 +39,7 @@ Instructions
 
      $ mongodump --host mongos0.domain --db $db --out /var/lib/mongodb-$db.backup
 
-6. Uninstall |MongoDB|
+3. Uninstall |MongoDB|
 
    Uninstall basic |MongoDB| from all shard servers and router servers.
 
