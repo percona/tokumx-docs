@@ -30,6 +30,8 @@ Instructions
    .. code-block:: bash
 
      $ sudo mongodump --dbpath /var/lib/mongodb --out /var/lib/mongodb.backup
+  
+   Take a moment to transfer any important configuration from your basic |MongoDB| configuration file (usually :file:`/etc/mongodb.conf`) to your |TokuMX| configuration file (usually :file:`/etc/tokumx.conf`).
 
 3. Uninstall |MongoDB|
 
@@ -38,8 +40,6 @@ Instructions
 4. Install |TokuMX|
 
       Install |TokuMX| :ref:`from tarballs <installation>` or :ref:`from packages <installation_from_packages>` on all machines. If your distribution's package automatically starts |TokuMX|, stop it for now.
-
-      Take a moment to transfer any important configuration from your basic |MongoDB| configuration file (usually :file:`/etc/mongodb.conf`) to your |TokuMX| configuration file (usually :file:`/etc/tokumx.conf`).
 
 5. Import your backup
 
